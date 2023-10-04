@@ -1,5 +1,5 @@
 # O(n^2) time | O(1) space
-def twoNumberSum_1(array, targetSum):
+def twoNumberSum_v1(array, targetSum):
     for i in range(len(array) - 1):
         firstNum = array[i]
         for j in range(i + 1, len(array)):
@@ -10,7 +10,7 @@ def twoNumberSum_1(array, targetSum):
 
 
 # O(n) time | O(n) space
-def twoNumberSum_2(array, targetSum):
+def twoNumberSum_v2(array, targetSum):
     nums = {} # create a hash-table
 
     for num in array:
@@ -26,7 +26,7 @@ def twoNumberSum_2(array, targetSum):
 # So, if you value space more than time, you would
 # probably choose this solution. Otherwise, you would choose the option with
 # a hash-table
-def twoNumberSum_3(array, targetSum):
+def twoNumberSum_v3(array, targetSum):
     array.sort()
     left = 0
     right = len(array) - 1
@@ -42,7 +42,7 @@ def twoNumberSum_3(array, targetSum):
     return []
 
 
-def twoNumberSum_4(array, targetSum):
+def twoNumberSum_v4(array, targetSum):
     unique_set = set(array)
 
     for num in array:
