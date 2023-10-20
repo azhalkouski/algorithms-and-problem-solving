@@ -1,4 +1,6 @@
-# refactoring of solution 1
+# Average: O(log(N)) time | O(log(N)) space because of
+# the recursive call stack frames
+# Worst: O(n) time | O(n) space
 def findClosestValueInBst(tree, target):
     if tree == None:
         return None
