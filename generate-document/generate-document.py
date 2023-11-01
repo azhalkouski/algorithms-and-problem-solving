@@ -9,6 +9,7 @@ def generateDocument_v1(characters, document):
     return True
 
 
+# OPTIMAL SOLUTION from space time complexity perspective
 # O(n + m) time | O(c) space, where
 # 'n' is the number of items in characters,
 # 'c' is the number of unique characters in characters,
@@ -34,6 +35,28 @@ def generateDocument_v2(characters, document):
     return True
 
 
+# CONSTANT SPACE solution as a trade off for hashmap solution in case we
+# can't afford that extra space consumption
+# O(m * (n + m)) time | O(1) space, where 'm' is the number of characters in the document,
+# and 'n' is the number of characters in the 'characters'
+def generateDocument_v3(characters, document):
+    for char in document:
+        frequencyInDocument = countCharFrequency(char, document)
+        frequencyInCharacters = countCharFrequency(char, characters)
+
+        if frequencyInDocument > frequencyInCharacters:
+            return False
+    return True
+
+
+def countCharFrequency(character, target):
+    count = 0
+    for char in target:
+        if character == char:
+            count += 1
+    return count
+
+
 print(generateDocument_v1("Bste!hetsi ogEAxpelrt x ", "AlgoExpert is the Best!") == True)
 print(generateDocument_v1("aheaollabbhb", "hello") == True)
 print(generateDocument_v1("estssa", "testing") ==  False)
@@ -45,3 +68,9 @@ print(generateDocument_v2("aheaollabbhb", "hello") == True)
 print(generateDocument_v2("estssa", "testing") ==  False)
 print(generateDocument_v2("helloworldO", "hello wOrld") ==  False)
 print(generateDocument_v2("&*&you^a%^&8766 _=-09     docanCMakemthisdocument", "Can you make this document &") ==  True)
+
+print(generateDocument_v3("Bste!hetsi ogEAxpelrt x ", "AlgoExpert is the Best!") == True)
+print(generateDocument_v3("aheaollabbhb", "hello") == True)
+print(generateDocument_v3("estssa", "testing") ==  False)
+print(generateDocument_v3("helloworldO", "hello wOrld") ==  False)
+print(generateDocument_v3("&*&you^a%^&8766 _=-09     docanCMakemthisdocument", "Can you make this document &") ==  True)
