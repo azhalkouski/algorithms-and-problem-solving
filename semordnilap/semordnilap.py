@@ -3,9 +3,9 @@ def semordnilap(words):
   wordSet = set(words)
   semordnilapPairs = []
 
-  for word in words:
-    reverse = word[::-1]
-    if reverse in wordSet and reverse != word:
+  for word in words: # O(n)
+    reverse = word[::-1] # O(m)
+    if reverse in wordSet and reverse != word: # O(1)
       semordnilapPairs.append([word, reverse])
       wordSet.remove(word)
       wordSet.remove(reverse)
