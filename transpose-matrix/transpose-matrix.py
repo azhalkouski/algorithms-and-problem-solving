@@ -1,0 +1,24 @@
+# O(w * h) time | O(w * h) space - where w is the width of the matrix and h is the height of the matrix
+def transposeMatrix(matrix):
+    transposedMatrix = []
+    for col in range(len(matrix[0])):
+        newRow = []
+        for row in range(len(matrix)):
+            newRow.append(matrix[row][col])
+        transposedMatrix.append(newRow)
+    return transposedMatrix
+
+
+print(transposeMatrix([[1]]) == [[1]])
+print(transposeMatrix([[1], [-1]]) == [[1, -1]])
+inputMatrix = [
+  [1, 4, 7],
+  [2, 5, 8],
+  [3, 6, 9]
+]
+outputMatrix = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
+]
+print(transposeMatrix(inputMatrix) == outputMatrix)
