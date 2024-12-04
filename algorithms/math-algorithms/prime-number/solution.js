@@ -21,7 +21,7 @@ function isPrime_1(n) {
 
 
 /**
- * O(n) Time
+ * O(sqrt(n)) Time
  * @param {number} n - natural number
  */
 function isPrime_2(n) {
