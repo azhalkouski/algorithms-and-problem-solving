@@ -6,3 +6,4 @@ Basic math algorithms:
 - Power of two
 - Recursion
 - Fibonacci sequence with recursion
+- Factorial with recursion
