@@ -27,6 +27,7 @@ class Queue {
   }
 }
 
+
 const queue = new Queue();
 console.log(queue.isEmpty());
 queue.enqueue(10);
