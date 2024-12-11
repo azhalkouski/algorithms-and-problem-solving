@@ -27,11 +27,29 @@ class LinkedList {
     this.head = node;
     this.size++;
   }
+
+  print() {
+    if (this.isEmpty()) {
+      console.log("The list is empty");
+    } else {
+      let current = this.head;
+      let listValues = "";
+      while (current) {
+        listValues += `${current.value} `;
+        current = current.next;
+      }
+      console.log(listValues);
+    }
+
+  }
 }
 
 const list = new LinkedList();
 console.log("List is empty: ", list.isEmpty());
 console.log("List size", list.getSize());
+list.print();
 list.prepend(10);
+list.print();
 list.prepend(20);
 list.prepend(30);
+list.print();
