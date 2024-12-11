@@ -72,6 +72,33 @@ class LinkedList {
     this.size++;
   }
 
+  removeFrom(index) {
+    if (index < 0 || index >= this.size) {
+      console.log(`Provided index: ${index} is out of the list boundary;
+        current size= ${this.size}`);
+      return null;
+    }
+    let removedNode;
+
+    if (index === 0) {
+      removedNode = this.head;
+      this.head = this.head.next;
+    } else {
+      let prevNode = this.head;
+      let currIndex = 1;
+      while (currIndex < index) {
+        prevNode = prevNode.next;
+        currIndex++;
+      }
+
+      removedNode = prevNode.next;
+      prevNode.next = removedNode.next;
+    }
+    this.size--;
+
+    return removedNode.value;
+  }
+
   print() {
     if (this.isEmpty()) {
       console.log("The list is empty");
@@ -125,4 +152,11 @@ list.print();
 list.insert(40, 2);
 list.print();
 
+console.log(list.getSize());
+
+console.log(list.removeFrom(10));
+console.log(list.removeFrom(0));
+list.print();
+console.log(list.removeFrom(1));
+list.print();
 console.log(list.getSize());
