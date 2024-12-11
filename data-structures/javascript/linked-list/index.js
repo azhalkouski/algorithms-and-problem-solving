@@ -47,6 +47,30 @@ class LinkedList {
 
     this.size++;
   }
+  
+  insert(value, index) {
+    if (index < 0 || index > this.size) {
+      console.log(`Provided index: ${index} is out of the list boundary;
+        current size= ${this.size}`);
+      return;
+    }
+
+    if (index === 0) {
+      this.prepend(value);
+      return;
+    }
+
+    let prevNode = this.head;
+    let currIndex= 1;
+    while (currIndex < index) {
+      prevNode = prevNode.next;
+      currIndex++;
+    }
+    const newNode = new Node(value);
+    newNode.next = prevNode.next;
+    prevNode.next = newNode;
+    this.size++;
+  }
 
   print() {
     if (this.isEmpty()) {
@@ -64,7 +88,7 @@ class LinkedList {
   }
 }
 
-const list = new LinkedList();
+// const list = new LinkedList();
 // console.log("List is empty: ", list.isEmpty());
 // console.log("List size", list.getSize());
 // list.print();
@@ -74,11 +98,31 @@ const list = new LinkedList();
 // list.prepend(30);
 // list.print();
 
-console.log("List is empty: ", list.isEmpty());
-console.log("List size", list.getSize());
+// const list = new LinkedList();
+// console.log("List is empty: ", list.isEmpty());
+// console.log("List size", list.getSize());
+// list.print();
+// list.append(10);
+// list.print();
+// list.append(20);
+// list.append(30);
+// list.print();
+
+const list = new LinkedList();
+console.log("List is empty? ", list.isEmpty());
+console.log("List size= ", list.getSize());
 list.print();
-list.append(10);
+
+list.insert(10, 0);
 list.print();
-list.append(20);
-list.append(30);
+
+list.insert(20, 0);
 list.print();
+
+list.insert(30, 1);
+list.print();
+
+list.insert(40, 2);
+list.print();
+
+console.log(list.getSize());
