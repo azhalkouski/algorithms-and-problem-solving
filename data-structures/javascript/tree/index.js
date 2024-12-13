@@ -21,25 +21,30 @@ class BinarySearchTree {
     if (this.isEmpty()) {
       this.root = newNode;
     } else {
-      this.insertNode(this.root, newNode)
+      this._insertNode(this.root, newNode)
     }
   }
 
-  insertNode(root, newNode) {
+  /**
+   * Private method
+   */
+  _insertNode(root, newNode) {
     if (newNode.value < root.value) {
       if (root.left === null) {
         root.left = newNode;
       } else {
-        this.insertNode(root.left, newNode);
+        this._insertNode(root.left, newNode);
       }
     } else {
       if (root.right === null) {
         root.right = newNode;
       } else {
-        this.insertNode(root.right, newNode);
+        this._insertNode(root.right, newNode);
       }
     }
   }
+
+
 }
 
 
