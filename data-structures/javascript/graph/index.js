@@ -24,12 +24,29 @@ class Graph {
     this.adjacentList[vertex1].add(vertex2);
     this.adjacentList[vertex2].add(vertex1);
   }
+
+  hasEdge(vertex1, vertex2) {
+    return this.adjacentList[vertex1].has(vertex2)
+      && this.adjacentList[vertex2].has(vertex1);
+  }
+
+  display() {
+    for(const vertex in this.adjacentList) {
+      console.log(vertex + " -> " + [...this.adjacentList[vertex]]);
+    }
+  }
 }
 
 const graph = new Graph();
+
 graph.addVertex('A');
 graph.addVertex('B');
 graph.addVertex('C');
 
 graph.addEdge('A', 'B');
 graph.addEdge('B', 'C');
+
+graph.display();
+
+console.log(graph.hasEdge('A', 'B'));
+console.log(graph.hasEdge('A', 'C'));
