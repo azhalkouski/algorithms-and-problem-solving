@@ -132,6 +132,37 @@ class BinarySearchTree {
       return this.max(root.right);
     }
   }
+
+  delete(value) {
+    this.root = this._deleteNode(this.root, value);
+  }
+
+  /**
+   * @param {*} root - the root of the tree or the subtree
+   */
+  _deleteNode(root, value) {
+    if (root === null) {
+      return root;
+    }
+    if (value < root.value) {
+      root.left = this._deleteNode(root.left, value);
+    } else if (value > root.value) {
+      root.right = this._deleteNode(root.right, value);
+    } else {
+      if (!root.left && !root.right) {
+        return null;
+      }
+      if (!root.left) {
+        return root.right;
+      } else if (!root.right) {
+        return root.left;
+      }
+      root.value = this.min(root.right);
+      root.right = this._deleteNode(root.right, root.value);
+    }
+
+    return root;
+  }
 }
 
 
@@ -161,4 +192,16 @@ bst.insert(7);
 
 console.log(bst.min(bst.root));
 console.log(bst.max(bst.root));
+
+bst.insert(14);
+bst.insert(16);
+
+console.log("Level order");
+bst.levelOrder();
+bst.delete(10);
+console.log("Level order");
+bst.levelOrder();
+
+
+
 
