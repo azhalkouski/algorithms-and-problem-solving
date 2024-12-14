@@ -85,7 +85,37 @@ class BinarySearchTree {
     }
   }
 
+  // Breadth First Search algorithm
+  levelOrder() {
+    // Step 1 - create a queue
+    /**
+    * I am using array for simplicity. However, an array is definitely not
+    * the best choice due to its linear time complexity.
+    * A better option is to use optimised queue which leverages a javascript
+    * object with two pointers: `front` and `rear`, and thus, achieve O(1) complexity.
+    * Here I just don't want to link another file to this file.
+    */
+    const queue = [];
 
+    // Step 2 - enqueue the root node
+    queue.push(this.root);
+
+    // As long as the queue is not empty, perform a set of operations
+    while (queue.length) {
+      // a. dequeue the node from the queue
+      let curr = queue.shift();
+      // b. read the node's value
+      console.log(curr.value);
+      // c. enqueue the node's left child if it exists
+      if (curr.left) {
+        queue.push(curr.left);
+      }
+      // d. enqueue the node's right child if it exists
+      if (curr.right) {
+        queue.push(curr.right);
+      }
+    }
+  }
 }
 
 
@@ -99,11 +129,11 @@ bst.insert(15);
 bst.insert(3);
 bst.insert(7);
 
-bst.preorder(bst.root);
-console.log("");
-bst.inorder(bst.root);
-console.log("");
-bst.postorder(bst.root);
+// bst.preorder(bst.root);
+// console.log("");
+// bst.inorder(bst.root);
+// console.log("");
+// bst.postorder(bst.root);
 
 // console.log(bst.search(bst.root, 10));
 // console.log(bst.search(bst.root, 5));
@@ -111,3 +141,4 @@ bst.postorder(bst.root);
 
 // console.log(bst.search(bst.root, 20));
 
+bst.levelOrder();
